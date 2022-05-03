@@ -1,7 +1,6 @@
 # A Java/Maven/JUnit/CI HelloWorld example to test in myusine
 
 This example demonstrates:
-
 * A simple Java 8 application with tests
 * Unit tests written with [JUnit 5](https://junit.org/junit5/)
 * Integration tests written with [JUnit 5](https://junit.org/junit5/)
