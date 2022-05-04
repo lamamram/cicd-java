@@ -8,7 +8,7 @@ This example demonstrates:
 * Code coverage reports via [JaCoCo](https://www.jacoco.org/jacoco/)
 * A Maven build that puts it all together
 * modif dev 1
-
+* modif dev 2
 
 ## Running the tests
 
