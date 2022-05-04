@@ -1,16 +1,13 @@
 # All Maven output goes here, compiled classes, generated code, etc.
 # Ignore only folders named target in root dir and direct child dirs.
-## .gitignore le dossier target à la racine du projet
 /target/
-## .gitignore n'importe quel dossier target dans le projet
-**/target/
+*/target/
 
 # Eclipse generated files.
 .settings
 .classpath
 .project
 # IntelliJ generated files.
-## .gitignore n'importe quel fichier d'extension iml dans le projet
 *.iml
 .idea
 
@@ -26,8 +23,3 @@ Thumbs.db
 #Ignore Bin compiled folder
 /bin/
 */bin/
-
-## .gitignore tous les fichiers se terminant par _unstage.txt
-## ... sauf to_unstage.txt
-*_unstage.txt
-!to_unstage.txt
