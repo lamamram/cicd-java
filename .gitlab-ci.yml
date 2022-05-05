@@ -29,7 +29,7 @@ test:
     - myusine
   script:
     # accès aux commandes maven via l'image maven
-    - mvn test
+    - mvn test -o
    
 
 
