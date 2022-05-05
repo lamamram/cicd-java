@@ -3,6 +3,9 @@
 # job => ensemble de commandes exécutées sur un dépôt git
 # dans un conteneur docker
 test:
+  # association des jobs et des runners avec des tags
+  tags:
+    - myusine
   script:
     - echo "TEST"
    
