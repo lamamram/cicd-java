@@ -28,7 +28,7 @@ compile:
   tags:
     - myusine
   script:
-    - mvn validate
+    - mvn dependency:resolve
 #  artifacts:
 #    expire_in: 3 days
 #    paths:
