@@ -1,4 +1,8 @@
 ---
+# la clé image permet de demander l'installation
+# d'une image particulière pour tous les jobs du pipeline
+# ou pour un job particulier
+image: maven:3-jdk-8-slim
 # la clé "test" désigne le nom arbitraire d'un job
 # job => ensemble de commandes exécutées sur un dépôt git
 # dans un conteneur docker
@@ -7,7 +11,8 @@ test:
   tags:
     - myusine
   script:
-    - echo "TEST"
+    # accès aux commandes maven via l'image maven
+    - mvn compile
    
 
 
