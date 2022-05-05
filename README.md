@@ -12,6 +12,7 @@ This example demonstrates:
 
 ## modif feature1
 * sub feature1
+* sub feature2
 
 
 ## Running the tests
