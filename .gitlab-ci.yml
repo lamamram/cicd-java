@@ -14,7 +14,7 @@ variables:
   # l'option -Dmaven.repo.local renseigne maven sur 
   # le chemin de destination des dépendances et des plugins
   MAVEN_OPTS: -Dmaven.repo.local=.m2/repository
-  TRIGGER_CACHE: "on"
+  TRIGGER_CACHE: "off"
 
 
 # le dossier .m2/repository sera uploadé dans gitlab
