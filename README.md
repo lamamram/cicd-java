@@ -10,6 +10,10 @@ This example demonstrates:
 * modif dev 1
 * modif dev 2
 
+## modif master
+* sub modif1
+* sub modif2
+
 ## Running the tests
 
 * To run the unit tests, call `mvn test`
