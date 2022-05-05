@@ -14,6 +14,7 @@ variables:
   # l'option -Dmaven.repo.local renseigne maven sur 
   # le chemin de destination des dépendances et des plugins
   MAVEN_OPTS: -Dmaven.repo.local=.m2/repository
+  TRIGGER_CACHE: "off"
 
 
 # le dossier .m2/repository sera uploadé dans gitlab
@@ -23,27 +24,39 @@ cache:
   paths:
     - .m2/repository
 
+# liste des étapes principales du pipeline
+stages:
+  - deps
+  - tests
 
-compile:
+# installer les dépendances du projet
+dependencies:
   tags:
     - myusine
+  # inclusion du job dans le stage "deps"
+  stage: deps
   script:
     - mvn dependency:resolve
-#  artifacts:
-#    expire_in: 3 days
-#    paths:
-#      - target/
+  # règles d'exécution du pipeline
+  # le job s'exécute si au moins une règle est vraie
+  rules:
+    # clause changes => exécution si changement sur les chemins listés
+    - changes:
+        - pom.xml
+    # clause if => exécution si la condition est vraie
+    - if: $TRIGGER_CACHE == "on"
 
 
-#test:
-#  # association des jobs et des runners avec des tags
-#  tags:
-#    - myusine
-#  script:
-#    # accès aux commandes maven via l'image maven
-#    # l'option "-o" pour "offline" permet 
-#    # de ne pas retélécharger les dépendances => cache => accélération du job 
-#    - mvn test -o
+test:
+  # association des jobs et des runners avec des tags
+  tags:
+    - myusine
+  stage: tests
+  script:
+    # accès aux commandes maven via l'image maven
+    # l'option "-o" pour "offline" permet 
+    # de ne pas retélécharger les dépendances => cache => accélération du job 
+    - mvn test -o
    
 
 
