@@ -23,13 +23,27 @@ cache:
   paths:
     - .m2/repository
 
-test:
-  # association des jobs et des runners avec des tags
+
+compile:
   tags:
     - myusine
   script:
-    # accès aux commandes maven via l'image maven
-    - mvn test -o
+    - mvn validate
+#  artifacts:
+#    expire_in: 3 days
+#    paths:
+#      - target/
+
+
+#test:
+#  # association des jobs et des runners avec des tags
+#  tags:
+#    - myusine
+#  script:
+#    # accès aux commandes maven via l'image maven
+#    # l'option "-o" pour "offline" permet 
+#    # de ne pas retélécharger les dépendances => cache => accélération du job 
+#    - mvn test -o
    
 
 
