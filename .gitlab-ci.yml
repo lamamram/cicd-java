@@ -1,0 +1,11 @@
+---
+# la clé "test" désigne le nom arbitraire d'un job
+# job => ensemble de commandes exécutées sur un dépôt git
+# dans un conteneur docker
+test:
+  script:
+    - echo "TEST"
+   
+
+
+
