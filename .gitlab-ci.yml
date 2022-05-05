@@ -6,13 +6,30 @@ image: maven:3-jdk-8-slim
 # la clé "test" désigne le nom arbitraire d'un job
 # job => ensemble de commandes exécutées sur un dépôt git
 # dans un conteneur docker
+
+# création de variables d'environnement
+# disponibles dans les conteneurs
+variables:
+  # MAVEN_OPTS: variable détectée par maven
+  # l'option -Dmaven.repo.local renseigne maven sur 
+  # le chemin de destination des dépendances et des plugins
+  MAVEN_OPTS: -Dmaven.repo.local=.m2/repository
+
+
+# le dossier .m2/repository sera uploadé dans gitlab
+# la première fois qu'il sera généré
+# tous les autres jobs iront installer ce dossier depuis le cache
+cache:
+  paths:
+    - .m2/repository
+
 test:
   # association des jobs et des runners avec des tags
   tags:
     - myusine
   script:
     # accès aux commandes maven via l'image maven
-    - mvn compile
+    - mvn test
    
 
 
