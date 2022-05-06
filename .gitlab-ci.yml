@@ -28,6 +28,7 @@ cache:
 stages:
   - deps
   - tests
+  - coverage
 
 # installer les dépendances du projet
 dependencies:
@@ -73,6 +74,7 @@ test:
     paths:
       - "target/surefire-reports/*Test.txt"
       - target/site/jacoco/index.html
+      - target/site/jacoco/jacoco.xml
     # artefacts intégrés directement dans l'interface
     reports:
       # rapport de tests unitaires junit au format xml
@@ -81,5 +83,18 @@ test:
 #    - if: $CI_COMMIT_BRANCH =~ /[0-9]+-feature[0-9]+/
    
 
-
+coverage:
+  stage: coverage
+  # image spécifique au job
+  image: haynes/jacoco2cobertura:1.0.7
+  tags:
+    - myusine
+  script:
+    - >
+      python /opt/cover2cover.py 
+      target/site/jacoco/jacoco.xml 
+      $CI_PROJECT_DIR/src/main/java/ > target/site/cobertura.xml
+  artifacts:
+    reports:
+      cobertura: target/site/cobertura.xml
 
