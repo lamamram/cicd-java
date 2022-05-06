@@ -19,15 +19,15 @@ public class Hello {
      * @param times How many times should this class say "Hello!"? The value should be no larger than 20.
      * @throws IllegalArgumentException Thrown when times is larger than 20 or a negative number.
      */
-    public void setTimes(int times) {
-        if (times < 0 || times > MAXIMUM_AMOUNT_OF_TIMES) {
-            throw new IllegalArgumentException(String.format(
-                    "Parameter «times» should be a positive number no larger than %d.",
-                    MAXIMUM_AMOUNT_OF_TIMES
-            ));
-        }
-        this.times = times;
-    }
+//    public void setTimes(int times) {
+//        if (times < 0 || times > MAXIMUM_AMOUNT_OF_TIMES) {
+//            throw new IllegalArgumentException(String.format(
+//                    "Parameter «times» should be a positive number no larger than %d.",
+//                    MAXIMUM_AMOUNT_OF_TIMES
+//            ));
+//        }
+//        this.times = times;
+//    }
 
     /**
      * Say "Hello!".
