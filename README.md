@@ -18,6 +18,8 @@ This example demonstrates:
 * sub feature1
 * sub feature2
 
+## modif feature2
+
 ## Running the tests
 
 * To run the unit tests, call `mvn test`
