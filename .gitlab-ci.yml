@@ -60,14 +60,15 @@ test:
     # de couverture de code 
     - mvn test jacoco:report -o
     # accès aux rapports junit
-    - ls -al target/surefire-reports/
+    # - ls -al target/surefire-reports/
     # accès aux rapports jacoco
-    - ls -al target/site/jacoco/
+    # - ls -al target/site/jacoco/
+    - cat target/site/jacoco/index.html 
   # prélever des fichiers / dossiers produits par le job
   artifacts:
     expire_in: 1 hour
     # artefacts disponibles en téléchargement dans gitlab
-    # et disponible dans les jobs suivants
+    # et disponibles dans les jobs suivants
     paths:
       - "target/surefire-reports/*Test.txt"
       - target/site/jacoco/index.html
