@@ -57,6 +57,8 @@ test:
     # l'option "-o" pour "offline" permet 
     # de ne pas retélécharger les dépendances => cache => accélération du job 
     - mvn test -o
+    # accès aux rapports junit
+    - ls -al target/surefire-reports/
 #  rules:
 #    - if: $CI_COMMIT_BRANCH =~ /[0-9]+-feature[0-9]+/
    
