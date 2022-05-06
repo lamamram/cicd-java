@@ -70,6 +70,7 @@ test:
     # et disponible dans les jobs suivants
     paths:
       - "target/surefire-reports/*Test.txt"
+      - target/site/jacoco/index.html
     # artefacts intégrés directement dans l'interface
     reports:
       # rapport de tests unitaires junit au format xml
