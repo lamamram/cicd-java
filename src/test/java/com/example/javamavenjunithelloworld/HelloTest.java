@@ -55,6 +55,6 @@ public class HelloTest {
     @Test
     public void testIllegalArgumentForHelloNegative() {
         Hello hi = new Hello();
-        assertThrows(IllegalArgumentException.class, () -> hi.setTimes(1));
+        assertThrows(IllegalArgumentException.class, () -> hi.setTimes(-1));
     }
 }
