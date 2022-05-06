@@ -59,6 +59,13 @@ test:
     - mvn test -o
     # accès aux rapports junit
     - ls -al target/surefire-reports/
+  # prélever des fichiers / dossiers produits par le job
+  artifacts:
+    expire_in: 1 hour
+    # artefacts disponibles en téléchargement dans gitlab
+    # et disponible dans les jobs suivants
+    paths:
+      - "target/surefire-reports/*Test.txt"
 #  rules:
 #    - if: $CI_COMMIT_BRANCH =~ /[0-9]+-feature[0-9]+/
    
