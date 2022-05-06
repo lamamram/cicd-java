@@ -63,6 +63,7 @@ test:
     # - ls -al target/surefire-reports/
     # accès aux rapports jacoco
     # - ls -al target/site/jacoco/
+    # afficher le contenu d'un fichier sur la console
     - cat target/site/jacoco/index.html 
   # prélever des fichiers / dossiers produits par le job
   artifacts:
