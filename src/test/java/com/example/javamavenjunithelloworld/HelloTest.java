@@ -45,16 +45,16 @@ public class HelloTest {
         String goal = String.format("%1$s%2$s%1$s%2$s%1$s%2$s", Hello.HELLO, System.lineSeparator());
         assertThat(os.toString(), is(equalTo(goal)));
     }
-//
-//    @Test
-//    public void testIllegalArgumentForHelloTooMuch() {
-//        Hello hi = new Hello();
-//        assertThrows(IllegalArgumentException.class, () -> hi.setTimes(Hello.MAXIMUM_AMOUNT_OF_TIMES + 1));
-//    }
-//
-//    @Test
-//    public void testIllegalArgumentForHelloNegative() {
-//        Hello hi = new Hello();
-//        assertThrows(IllegalArgumentException.class, () -> hi.setTimes(-1));
-//    }
+
+    @Test
+    public void testIllegalArgumentForHelloTooMuch() {
+        Hello hi = new Hello();
+        assertThrows(IllegalArgumentException.class, () -> hi.setTimes(Hello.MAXIMUM_AMOUNT_OF_TIMES + 1));
+    }
+
+    @Test
+    public void testIllegalArgumentForHelloNegative() {
+        Hello hi = new Hello();
+        assertThrows(IllegalArgumentException.class, () -> hi.setTimes(-1));
+    }
 }
