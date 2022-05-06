@@ -66,6 +66,10 @@ test:
     # et disponible dans les jobs suivants
     paths:
       - "target/surefire-reports/*Test.txt"
+    # artefacts intégrés directement dans l'interface
+    reports:
+      # rapport de tests unitaires junit au format xml
+      junit: "target/surefire-reports/TEST-*.xml"
 #  rules:
 #    - if: $CI_COMMIT_BRANCH =~ /[0-9]+-feature[0-9]+/
    
