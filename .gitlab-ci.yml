@@ -55,10 +55,14 @@ test:
   script:
     # accès aux commandes maven via l'image maven
     # l'option "-o" pour "offline" permet 
-    # de ne pas retélécharger les dépendances => cache => accélération du job 
-    - mvn test -o
+    # de ne pas retélécharger les dépendances => cache => accélération du job
+    # la sous commande "jacoco:report" est lié au plugin jacoco 
+    # de couverture de code 
+    - mvn test jacoco:report -o
     # accès aux rapports junit
     - ls -al target/surefire-reports/
+    # accès aux rapports jacoco
+    - ls -al target/site/jacoco/
   # prélever des fichiers / dossiers produits par le job
   artifacts:
     expire_in: 1 hour
