@@ -27,5 +27,19 @@
   - CALMS
 * design d'un pipeline de création de valeur à l'echelle de l'entreprise
 
+## git: intro
+
+1. `git init`:création dépôt
+2. `git config --glbal user.name|email`: ajout métadonnées
+3. `git add`: ajout index
+4. `git commit`: validation dans le dépôt
+
+## git: analyser l'historique
+
+* `git log [-n] [-p] [--oneline]`: afficher l'historique
+* `git show`: voir un commit
+* pointeur HEAD: désigne le commit courant et/ou la branche
+* pointeur de branche: désigne le commit courant 
+
 
 
