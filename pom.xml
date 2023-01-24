@@ -5,8 +5,14 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>usine_s4</name>
     <properties>
+        <!-- encoding -->
         <project.encoding>UTF-8</project.encoding>
         <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
-        <project.build.outputEncoding></project.build.outputEncoding>
+        <project.build.outputEncoding>${project.encoding}</project.build.outputEncoding>
+        <!-- jdk version -->
+        <java.version>17</java.version>
+        <!-- les propriétés de compilateur suffisent: pas besoin du plugin -->
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
     </properties>
 </project>
