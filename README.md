@@ -18,6 +18,8 @@
 * préservation de la qualité, orienté résultats
 * auto-organisation
 
+* [liste de techniques LEAN](https://www.leanproduction.com/top-25-lean-tools/)
+
 ## points théoriques sur le DevOps
 
 * mur de la confusion: stéréotypes dev vs stéréotypes ops
@@ -90,6 +92,8 @@
    - config de la clé privé côté client
 2. ajout dépôt: `git remote add <repo_name> <repo_address>`
 3. pousser: `git push <repo_name> <branch_name>`
-   - fixer le dépôt et la branche par défaut pour la branche locale avec **-u** 
+                                                                                                                                                                                                                                                                                                                                                                                                               - fixer le dépôt et la branche par défaut pour la branche locale avec **-u**
+                                                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                                                               
 
 
