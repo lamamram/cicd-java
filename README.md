@@ -49,6 +49,39 @@
 * édition du fichier `~/.bashrc` pour créer des alias au niveau du git bash
    - ex: `alias gst='git status'` + `source ~/.bashrc` pour charger les alias
 
+## les commandes d'inversion
+
+* `git checkout [HEAD~n] -- file(s)` : plaquer l'état du dépôt pour un ou plusieurs fichier dans la copie de travail
+   - inverser des modifs en cours
+* `git rm [-r]`: suppression de la copie de travail + demande de suppresion du dépôt (au prochain commit).
+   - `git rm --cached` pour demander la suppression sans supprimer de la copie
+* `git reset -- file(s)`: pour désindéxer
+* `git reset [HEAD~n] [--soft | | --hard]`: 
+   - déplacement de head vers le commit en paramètre
+   - suppression de l'historique des commits précédemment devant le nouveau HEAD
+   - selon l'option, conservation ou écrasement de la copie et de l'index
+   - attention: ne pas reset un commit déjà poussé
+   - annuler un reset: regarder dans le reflog et git reset HEAD@{n}
+* `git revert [HEAD~n] [--no-edit]`: inversion de commit par création du commit inverse
+   - inversion d'un revert en conflit: `git reset HEAD --hard` pour virer les ajouts à l'index   
+
+## les commandes d'inversion
+
+* `git checkout [HEAD~n] -- file(s)` : plaquer l'état du dépôt pour un ou plusieurs fichier dans la copie de travail
+   - inverser des modifs en cours
+* `git rm [-r]`: suppression de la copie de travail + demande de suppresion du dépôt (au prochain commit).
+   - `git rm --cached` pour demander la suppression sans supprimer de la copie
+* `git reset -- file(s)`: pour désindéxer
+* `git reset [HEAD~n] [--soft | | --hard]`: 
+   - déplacement de head vers le commit en paramètre
+   - suppression de l'historique des commits précédemment devant le nouveau HEAD
+   - selon l'option, conservation ou écrasement de la copie et de l'index
+   - attention: ne pas reset un commit déjà poussé
+   - annuler un reset: regarder dans le reflog et git reset HEAD@{n}
+* `git revert [HEAD~n] [--no-edit]`: inversion de commit par création du commit inverse
+   - inversion d'un revert en conflit: `git reset HEAD --hard` pour virer les ajouts à l'index   
+
+
 ## dépôts distants
 
 1. synchronisation ssh:
@@ -58,4 +91,5 @@
 2. ajout dépôt: `git remote add <repo_name> <repo_address>`
 3. pousser: `git push <repo_name> <branch_name>`
    - fixer le dépôt et la branche par défaut pour la branche locale avec **-u** 
+
 
