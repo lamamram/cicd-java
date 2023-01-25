@@ -45,7 +45,9 @@
 
 * `git config --global core.editor`: utiliser un éditeur par défaut autre que Vi pour les non linuxiens
 * `git config --global alias.xx yyyy`: remplacer yyyy par xx comme commade git
-* édition du fichier ~/.bashrc pour créer des alias au niveau du git bash
+* édition du fichier `~/.bash_profile` pour charger auto. le .bashrc
+* édition du fichier `~/.bashrc` pour créer des alias au niveau du git bash
    - ex: `alias gst='git status'` + `source ~/.bashrc` pour charger les alias
+
  
 
