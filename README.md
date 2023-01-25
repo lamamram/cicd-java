@@ -39,7 +39,13 @@
 * `git log [-n] [-p] [--oneline]`: afficher l'historique
 * `git show`: voir un commit
 * pointeur HEAD: désigne le commit courant et/ou la branche
-* pointeur de branche: désigne le commit courant 
+* pointeur de branche: désigne le commit courant
 
+## customisations
 
+* `git config --global core.editor`: utiliser un éditeur par défaut autre que Vi pour les non linuxiens
+* `git config --global alias.xx yyyy`: remplacer yyyy par xx comme commade git
+* édition du fichier ~/.bashrc pour créer des alias au niveau du git bash
+   - ex: `alias gst='git status'` + `source ~/.bashrc` pour charger les alias
+ 
 
