@@ -1,0 +1,5 @@
+unit test: 
+  script: 
+    - echo 'Test !'
+  tags: 
+    - myusine
