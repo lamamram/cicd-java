@@ -8,7 +8,7 @@
   - création / lancement : `vagrant up`
   - connexion sur la vm : `vagrant ssh`
   - arrêt de la vm : `vagrant halt`
-  - destruction de la vm : `vagrant destroy`
+  - destruciton de la vm : `vagrant destroy`
 
 ## points théoriques sur l'agilité
 
