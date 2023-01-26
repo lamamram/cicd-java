@@ -1,4 +1,4 @@
-image: maven:3.8.7-eclipse-temurin-17-focal
+image: gitlab.myusine.fr:5050/myusine/dev/maven:3.8.7-eclipse-temurin-17-focal
 
 # nom du job arbitraire
 unit test:
