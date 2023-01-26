@@ -1,8 +1,10 @@
+image: maven:3.8.7-eclipse-temurin-17-focal
+
 # nom du job arbitraire
 unit test:
   # liste de commandes terminal 
   script: 
-    - echo 'Test !'
+    - mvn -v
   # mots clés opérant la compatibilité du job avec le runner
   tags: 
     - myusine
