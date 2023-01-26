@@ -7,7 +7,16 @@ image: $CI_REGISTRY_IMAGE/maven:3.8.7-eclipse-temurin-17-focal
 unit test:
   # liste de commandes terminal 
   script: 
-    - mvn test
+    - mvn test surefire-report:report
   # mots clés opérant la compatibilité du job avec le runner
   tags: 
     - myusine
+  # upload ou intégration de rapports et aures produits du job dans gitlab
+  artifacts:
+    # temps de rétention
+    expire_in: 1 hour
+    # chemin pour accéder en téléchargement depuis gitlab
+    paths:
+      - "target/surefire-reports/TEST-*.xml"
+    reports:
+      junit: "target/surefire-reports/TEST-*.xml"
