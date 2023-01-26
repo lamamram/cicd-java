@@ -14,5 +14,52 @@
         <!-- les propriétés de compilateur suffisent: pas besoin du plugin -->
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.compiler.source>${java.version}</maven.compiler.source>
+        <!-- version des dépendances -->
+        <junit-jupiter.version>5.9.2</junit-jupiter.version>
+        <junit-platform-suite.version>1.9.2</junit-platform-suite.version>
+        <maven-surefire-plugin.version>3.0.0-M8</maven-surefire-plugin.version>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite</artifactId>
+            <version>${junit-platform-suite.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <enableAssertions>true</enableAssertions>
+                    <includes>
+                        <include>**/*Test.java</include>
+                    </includes>
+                    <!-- tags -->
+                    <!-- <groups>A</groups -->
+                    <!-- <excludedGroups>B</excludedGroups> -->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
