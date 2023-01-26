@@ -1,10 +1,13 @@
-image: gitlab.myusine.fr:5050/myusine/dev/maven:3.8.7-eclipse-temurin-17-focal
+# image par défaut pour le pipeline
+# utilisation du registre privé
+# utlisation d'une variable d'env. prédéfinie pour masquer l'url du registre
+image: $CI_REGISTRY_IMAGE/maven:3.8.7-eclipse-temurin-17-focal
 
 # nom du job arbitraire
 unit test:
   # liste de commandes terminal 
   script: 
-    - mvn -v
+    - mvn test
   # mots clés opérant la compatibilité du job avec le runner
   tags: 
     - myusine
