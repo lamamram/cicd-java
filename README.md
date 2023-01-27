@@ -84,12 +84,19 @@
 
 ## dépôts distants
 
+### commandes de base
+
+* git clone <address>: copie d'un dépôt distant
+* git remote add <repo> <address>: ajout d'un dépôt distant en local
+
+### procédure de synchronisation
+
 1. synchronisation ssh:
    - `ssh-jkeygen`
    - upload de la clé publique sur gitlab
    - config de la clé privé côté client
 2. ajout dépôt: `git remote add <repo_name> <repo_address>`
 3. pousser: `git push <repo_name> <branch_name>`
-   - fixer le dépôt et la branche par défaut pour la branche locale avec **-u** 
+   - fixer le dépôt et la branche par défaut pour la branche locale avec **-u**
 
 
