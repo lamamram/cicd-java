@@ -59,6 +59,6 @@ deploy:
   tags:
     - myusine
   script:
-    - echo "Deploy!"
+    - echo "Deploy this!"
 
     

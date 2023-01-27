@@ -97,6 +97,7 @@
 * git remote add <repo> <address>: ajout d'un dépôt distant en local
 * git pull
 * git push -u ...
+* git push --delete pour supprimer une branche distante
 
 ### procédure de synchronisation
 
