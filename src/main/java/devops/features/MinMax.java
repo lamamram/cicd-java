@@ -28,5 +28,9 @@ public class MinMax {
     public int getMaxValue() {
         return maxValue;
     }
+    
+    public int getDiff() {
+        return maxValue - minValue;
+    }
 
 }

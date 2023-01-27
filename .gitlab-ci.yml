@@ -3,20 +3,53 @@
 # utlisation d'une variable d'env. prédéfinie pour masquer l'url du registre
 image: $CI_REGISTRY_IMAGE/maven:3.8.7-eclipse-temurin-17-focal
 
+# étapes successives d'exécution du pipeline
+stages:
+  - testing
+  - building
+  - deploying
+
 # nom du job arbitraire
 unit test:
+  stage: testing
   # liste de commandes terminal 
   script: 
-    - mvn test surefire-report:report
+    - mvn test surefire-report:report jacoco:report
+    # affichage du rapport html dans la console pour prélever la couverture
+    - cat target/site/jacoco/index.html
   # mots clés opérant la compatibilité du job avec le runner
   tags: 
     - myusine
+  # regex de capture du coverage
+  coverage: "/Total.*?([0-9]{1,3})%/"
   # upload ou intégration de rapports et aures produits du job dans gitlab
   artifacts:
     # temps de rétention
     expire_in: 1 hour
     # chemin pour accéder en téléchargement depuis gitlab
+    # + accessible dans les jobs suivants
     paths:
       - "target/surefire-reports/TEST-*.xml"
+      - "target/site/jacoco/jacoco.xml"
     reports:
       junit: "target/surefire-reports/TEST-*.xml"
+
+# conversion du rapport jacoco -> cobertura attendu par gitlab
+coverage:
+  stage: building
+  # image spécifique au job
+  image: haynes/jacoco2cobertura:1.0.7
+  tags:
+    - myusine
+  script:
+    # ">" dans yaml: opérateur qui convertit les sauts de ligne en espace
+    - >
+      python /opt/cover2cover.py 
+      target/site/jacoco/jacoco.xml 
+      $CI_PROJECT_DIR/src/main/java/ > target/site/cobertura.xml
+  artifacts:
+    # remontée du rapport cobertura dans les MR
+    reports:
+      coverage_report:
+          coverage_format: cobertura
+          path: target/site/cobertura.xml
