@@ -62,6 +62,13 @@
    - selon l'option, conservation ou écrasement de la copie et de l'index
    - attention: ne pas reset un commit déjà poussé
    - annuler un reset: regarder dans le reflog et git reset HEAD@{n}
+   
+   |  option     | copie de travail |   index   |
+   |-------------|------------------|-----------|
+   |  soft       | conservée        | conservé  |
+   | mixed (dflt)| conservée        | vidé      |
+   | hard        | écrasée          | vidé      |
+   
 * `git revert [HEAD~n] [--no-edit]`: inversion de commit par création du commit inverse
    - inversion d'un revert en conflit: `git reset HEAD --hard` pour virer les ajouts à l'index   
 
