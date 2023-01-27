@@ -101,9 +101,11 @@
 1. synchronisation ssh:
    - `ssh-jkeygen`
    - upload de la clé publique sur gitlab
-   - config de la clé privé côté client
+   - config de la clé privé côté client [^1]
 2. ajout dépôt: `git remote add <repo_name> <repo_address>`
 3. pousser: `git push <repo_name> <branch_name>`
    - fixer le dépôt et la branche par défaut pour la branche locale avec **-u**
 
 
+
+[^1]: dans le fichier ~/.ssh/config
