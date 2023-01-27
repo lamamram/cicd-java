@@ -95,6 +95,7 @@
 
 * git clone <address>: copie d'un dépôt distant
 * git remote add <repo> <address>: ajout d'un dépôt distant en local
+* git pull
 
 ### procédure de synchronisation
 
