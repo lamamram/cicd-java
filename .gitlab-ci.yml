@@ -53,3 +53,10 @@ coverage:
       coverage_report:
           coverage_format: cobertura
           path: target/site/cobertura.xml
+
+deploy:
+  stage: deploying
+  tags:
+    - myusine
+  script:
+    - echo "Deploy!"
