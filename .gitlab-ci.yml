@@ -1,0 +1,5 @@
+compilation:
+  tags:
+    - myusine
+  script:
+    - echo "Compilation !!!"
