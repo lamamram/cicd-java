@@ -1,10 +1,10 @@
 import subprocess
 import gitlab, os, sys
 
-GITLAB_USER = "root"
-GITLAB_TOKEN = "glpat-Bdxa8eQQ3R2HRd3ay7ZM"
-GITLAB_HOST = "http://gitlab.formation.lan"
-GITLAB_PROJECT = "devops"
+GITLAB_USER = "dev_a"
+GITLAB_TOKEN = "???????"
+GITLAB_HOST = "https://gitlab.myusine.lan"
+GITLAB_PROJECT = "myusine/dev"
 
 gl = gitlab.Gitlab(
   url=GITLAB_HOST,
