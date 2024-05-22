@@ -10,4 +10,13 @@ public class ZipCodeRegex {
         this.pattern = Pattern.compile((patternString));
     }
 
+    public String match(String target){
+        String ret = null;
+        Matcher matcher = pattern.matcher(target);
+        if(matcher.find()){
+            ret = matcher.group();
+        }
+        return ret;
+    }
+
 }
