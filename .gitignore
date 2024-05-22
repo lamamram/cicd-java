@@ -1,3 +1,4 @@
 .vagrant/
 infos.txt
 target/
+debug.log
