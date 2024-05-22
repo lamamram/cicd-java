@@ -1,20 +1,8 @@
-# JSON compacté : {"compilation":{"tags":["myusine"],"script":["echo 'Compilation !!!'"]}}
-# JSON déplié
-# {
-#   "compilation": {
-#     "tags": [
-#       "myusine"
-#     ],
-#     "script": [
-#       "echo 'Compilation !!!'"
-#     ]
-#   }
-# }
-# Yet Another Markup Language => bien mieux que XML
-# YAML = simplification du Json déplié
-# YAML est compatible avec json 
 compilation:
+  # utilisation d'une image docker pour le job courant 
+  # pour utilser maven dans le script
+  image: maven:3.8.5-openjdk-17-slim
   tags: [myusine]
   script:
-    - echo "Compilation !!!"
+    - mvn compile
 
