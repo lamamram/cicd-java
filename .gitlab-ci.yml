@@ -1,5 +1,20 @@
+# JSON compacté : {"compilation":{"tags":["myusine"],"script":["echo 'Compilation !!!'"]}}
+# JSON déplié
+# {
+#   "compilation": {
+#     "tags": [
+#       "myusine"
+#     ],
+#     "script": [
+#       "echo 'Compilation !!!'"
+#     ]
+#   }
+# }
+# Yet Another Markup Language => bien mieux que XML
+# YAML = simplification du Json déplié
+# YAML est compatible avec json 
 compilation:
-  tags:
-    - myusine
+  tags: [myusine]
   script:
     - echo "Compilation !!!"
+
