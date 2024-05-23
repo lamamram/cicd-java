@@ -110,6 +110,7 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <configFile>${project.srcdir}/main/resources/formatter/formatter.xml</configFile>
                     <encoding>UTF-8</encoding>
                 </configuration>
                 <version>2.23.0</version>

@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import com.example.helloworld.ZipCodeRegex;
 
 public class ZipCodeRegexTest {
-    ZipCodeRegex zcr;
+            ZipCodeRegex zcr;
 
     // fixture : méthode qui sert le contexte du test pour les méthodes de test
     @BeforeEach
