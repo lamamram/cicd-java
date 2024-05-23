@@ -15,11 +15,32 @@ units:
     expire_in: "1 hour"
     # chemin de prélèvement
     # - pour téléchargement depuis cetaines intefaces de Gitlab
-    # - pour permettre de réinjecter l'artifact dans les jobs suivant
+    # - pour permettre de réinjecter l'artifact dans les jobs suivants
     paths:
       - "target/surefire-reports/TEST-*.xml"
+      - "target/site/jacoco/jacoco.xml"
+      - "target/site/jacoco/index.html"
     # gestion d'artefacts spéciaux (units, qualité, coverage ...)
     reports:
       junit: "target/surefire-reports/TEST-*.xml"
+
+# on va générer un rapport de couverture de code 
+# au format "cobertura" demandé à Gitlab
+coverage:
+  # contient python et un script de conversion
+  image: haynes/jacoco2cobertura:1.0.7
+  tags:
+    - myusine
+  # python <script> <rapport_jacoco_atifact> <scope> redirection dans <fichier> 
+  script:
+    # >: opérateur "chevron" en YAML, intérêt: on peut découper la commande
+    # en plusieurs lignes (conversion de \n en " ")
+    - >
+      python /opt/cover2cover.py 
+      target/site/jacoco/jacoco.xml
+      $CI_PROJECT_DIR/src/main/java/ > target/site/cobertura.xml
+  artifacts:
+    reports:
+      cobertura: target/site/cobertura.xml
       
 
