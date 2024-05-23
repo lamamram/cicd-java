@@ -1,6 +1,7 @@
 {
     "java.configuration.updateBuildConfiguration": "interactive",
-    "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
+    //"java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
+    "java.format.settings.url": "./src/main/resources/formatter/formatter.xml",
     "java.format.settings.profile": "GoogleStyle",
     "terminal.integrated.profiles.windows": {
         "PowerShell": {
