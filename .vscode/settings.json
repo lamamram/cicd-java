@@ -23,4 +23,11 @@
           "icon": "terminal-bash"
         }
     },
+    "files.exclude": {
+      "**/.classpath": true,
+      "**/.factorypath": true,
+      "**/.git": false,
+      "**/.project": true,
+      "**/.settings": true
+    },
 }
