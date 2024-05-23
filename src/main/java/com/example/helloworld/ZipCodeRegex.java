@@ -1,5 +1,7 @@
 package com.example.helloworld;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,6 +19,15 @@ public class ZipCodeRegex {
             ret = matcher.group();
         }
         return ret;
+    }
+
+    public List<String> findAll(String target) {
+        Matcher matcher = pattern.matcher(target);
+        List<String>lst = new ArrayList<>(); 
+        while(matcher.find()) {
+            lst.add(matcher.group());
+        }
+        return lst;
     }
 
 }
