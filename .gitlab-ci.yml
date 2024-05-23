@@ -11,7 +11,15 @@ units:
     # par défaut les artefacts injectés dans un job suivant 
     # seront dégagés par git clean
     # untracked: false
+    # dlc de l'artifact
     expire_in: "1 hour"
+    # chemin de prélèvement
+    # - pour téléchargement depuis cetaines intefaces de Gitlab
+    # - pour permettre de réinjecter l'artifact dans les jobs suivant
     paths:
       - "target/surefire-reports/TEST-*.xml"
+    # gestion d'artefacts spéciaux (units, qualité, coverage ...)
+    reports:
+      junit: "target/surefire-reports/TEST-*.xml"
+      
 
