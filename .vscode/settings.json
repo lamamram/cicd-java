@@ -1,0 +1,26 @@
+{
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
+    "java.format.settings.profile": "GoogleStyle",
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+          "source": "PowerShell",
+          "icon": "terminal-powershell",
+          // "args": ["-File", "C:\\ProgramData\\Anaconda3\\shell\\condabin\\conda-hook.ps1"]
+        },
+        "Command Prompt": {
+          "path": [
+            "${env:windir}\\Sysnative\\cmd.exe",
+            "${env:windir}\\System32\\cmd.exe"
+          ],
+          "icon": "terminal-cmd"
+        },
+        "GitBash": {
+          "path": [
+            "C:\\Program Files\\Git\\bin\\bash.exe"
+          ],
+          "source": "Git Bash",
+          "icon": "terminal-bash"
+        }
+    },
+}

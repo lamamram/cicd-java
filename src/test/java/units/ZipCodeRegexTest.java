@@ -12,23 +12,23 @@ import com.example.helloworld.ZipCodeRegex;
 public class ZipCodeRegexTest {
     ZipCodeRegex zcr;
 
-    //fixture : méthode qui sert le contexte du test pour les méthodes de test
+    // fixture : méthode qui sert le contexte du test pour les méthodes de test
     @BeforeEach
-    void instantiateRegex(){
+    void instantiateRegex() {
         String zipCodePattern = "[0-9]{5}";
         zcr = new ZipCodeRegex(zipCodePattern);
     }
-    
-    //nomenclature de méthode de test commençant par test, 
+
+    // nomenclature de méthode de test commençant par test,
     // méthodes public sans retour car on exécute des assertions
     // décorateur Test (pour dire ici cas de test)
     @Test
     @DisplayName("tester le match d'une cible à partir du début")
     @Tag("Unit")
-    public void testMatch(){
+    public void testMatch() {
         String zipcode = "44500";
         assertNotNull(zcr.match(zipcode));
     }
 
-    //@AfterEach: pour libérer la mémoire
+    // @AfterEach: pour libérer la mémoire
 }
