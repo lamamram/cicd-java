@@ -1,7 +1,7 @@
 units:
-  # utilisation d'une image docker pour le job courant 
-  # pour utilser maven dans le script
-  image: maven:3.8.5-openjdk-17-slim
+  # utilisation d'une variable d'environnement prédéfinie
+  # pour masquer des infos ou conditionner les jobs
+  image: $CI_REGISTRY_IMAGE/maven:3.8.5-openjdk-17-slim
   tags: [myusine]
   script:
     - mvn test
