@@ -5,4 +5,13 @@ units:
   tags: [myusine]
   script:
     - mvn test
+  artifacts:
+    # les artifacts qui sont des fichiers untracked 
+    # du point de vue de git
+    # par défaut les artefacts injectés dans un job suivant 
+    # seront dégagés par git clean
+    # untracked: false
+    expire_in: "1 hour"
+    paths:
+      - "target/surefire-reports/TEST-*.xml"
 
