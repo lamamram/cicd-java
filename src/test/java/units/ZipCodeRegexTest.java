@@ -14,7 +14,7 @@ public class ZipCodeRegexTest {
 
     //fixture : méthode qui sert le contexte du test pour les méthodes de test
     @BeforeEach
-    private void instantiateRegex(){
+    void instantiateRegex(){
         String zipCodePattern = "[0-9]{5}";
         zcr = new ZipCodeRegex(zipCodePattern);
     }

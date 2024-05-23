@@ -14,6 +14,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <junit-surefire.version>3.2.5</junit-surefire.version>
+        <jacoco.version>0.8.7</jacoco.version>
     </properties>
 
     <dependencies>
@@ -70,6 +71,32 @@
 					<!-- tags -->
 					<!-- <groups>A</groups -->
 					<!-- <excludedGroups>B</excludedGroups> -->
+				</configuration>
+            </plugin>
+            <plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+				<!-- config; pour cadrer, si nécéssaire, le scope à tester -->
+                <configuration>
+					<excludes>
+						<exclude>**/todo/*</exclude>
+						<exclude>**/smells/*</exclude>
+					</excludes>
 				</configuration>
             </plugin>
         </plugins>
