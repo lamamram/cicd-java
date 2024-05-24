@@ -95,16 +95,24 @@ package:
   stage: release
   tags:
     - myusine
+  # variables:
+  #   GIT_SSL_NO_VERIFY: "true"
   script:
     - >
       mvn $MAVEN_CLI_OPTS 
       -Dmaven.test.skip=true 
       package
-    - >
-      curl 
-      --header "JOB-TOKEN: $CI_JOB_TOKEN" 
-      --upload-file target/formation-1.0-SNAPSHOT.jar  
-      "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/my_package/1.0-SNAPSHOT/formation.jar"
+    # - >
+    #   curl 
+    #   --header "JOB-TOKEN: $CI_JOB_TOKEN" 
+    #   --upload-file target/formation-1.0-SNAPSHOT.jar  
+    #   "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/my_package/1.0-SNAPSHOT/formation.jar"
+  artifacts:
+    untracked: false
+    access: all
+    expire_in: "1 hour"
+    paths:
+      - "target/formation-1.0-SNAPSHOT.jar"
   # conditions d'exécution du pipeline
   # on ajoute une liste des règles:
   # si une règle est vraie alors le job s'exécute (OU logique)
