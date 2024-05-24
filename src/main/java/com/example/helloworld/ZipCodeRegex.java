@@ -30,4 +30,9 @@ public class ZipCodeRegex {
     return lst;
   }
 
+  public String replace(String target, String repl) {
+    Matcher matcher = pattern.matcher(target);
+    return matcher.replaceAll(repl);
+  }
+
 }
