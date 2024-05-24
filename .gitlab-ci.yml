@@ -20,8 +20,9 @@ stages:
   - test
   - coverage
   - quality
+  - release
 
-generate_cache:
+.generate_cache:
   # exécution parrallèle pour générer 2 exemplaires du cache
   # en cas d'exécution de jobs concurents
   # on utilise cette clé sur un job dont le but de générer les dépendences 
@@ -33,7 +34,7 @@ generate_cache:
   script:
     - mvn compile
 
-units:
+.units:
   stage: test
   tags: [myusine]
   # variables:
@@ -58,7 +59,7 @@ units:
   script:
     - sleep 25
 
-coverage:
+.coverage:
   stage: coverage
   needs: [units]
   image: haynes/jacoco2cobertura:1.0.7
@@ -75,7 +76,7 @@ coverage:
         coverage_format: cobertura
         path: target/site/cobertura.xml
 
-sonar:
+.sonar:
   stage: quality
   tags:
     - myusine
@@ -89,5 +90,28 @@ sonar:
       -Dsonar.java.binaries=target
       -Dsonar.junit.reportPaths=target/surefire-reports
       -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
-      
+
+package:
+  stage: release
+  tags:
+    - myusine
+  script:
+    - >
+      mvn $MAVEN_CLI_OPTS 
+      -Dmaven.test.skip=true 
+      package
+    - >
+      curl 
+      --header "JOB-TOKEN: $CI_JOB_TOKEN" 
+      --upload-file target/formation-1.0-SNAPSHOT.jar  
+      "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/my_package/1.0-SNAPSHOT/formation.jar"
+  # conditions d'exécution du pipeline
+  # on ajoute une liste des règles:
+  # si une règle est vraie alors le job s'exécute (OU logique)
+  # toutes les clauses d'une règle doivent être vraie pour exécuter (ET logique) 
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+      when: on_success
+    # si le pipeline est excuté contre un tag != une branche
+    - if: $CI_COMMIT_TAG
 
