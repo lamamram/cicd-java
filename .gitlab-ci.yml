@@ -1,15 +1,45 @@
-# liste ordonnée des étapes principales du pipeline
+# déplacement de l'image maven au niveau du pipeline lui même
+# car cette image est centrale pour les jobs
+image: $CI_REGISTRY_IMAGE/maven:3.8.5-openjdk-17-slim
+
+variables:
+  MAVEN_CLI_OPTS: "--batch-mode"
+  # déplacer les dépédences installées à la racine du dépôt dans les containers
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+
+
+cache:
+  # policy: pull-push
+  # on ne nettoie pas les fichiers 'untracked' avec git clean
+  untracked: true
+  # when: on_success
+  paths:
+    - ".m2/repository"
+
 stages:
   - test
   - coverage
+  - quality
+
+generate_cache:
+  # exécution parrallèle pour générer 2 exemplaires du cache
+  # en cas d'exécution de jobs concurents
+  # on utilise cette clé sur un job dont le but de générer les dépendences 
+  parallel: 2
+  # .pre => stage caché qui est toujours exécuté avant les autres
+  stage: .pre
+  tags:
+    - myusine
+  script:
+    - mvn compile
 
 units:
-  image: $CI_REGISTRY_IMAGE/maven:3.8.5-openjdk-17-slim
   stage: test
   tags: [myusine]
+  # variables:
+  #   MY_VAR: my_value
   script:
     - mvn test
-    # il faut afficher le rapport de couverture qui comprend le total
     - cat target/site/jacoco/index.html
   coverage: "/Total.*?([0-9]{1,3})%/"
   artifacts:
@@ -21,8 +51,6 @@ units:
     reports:
       junit: "target/surefire-reports/TEST-*.xml"
 
-# exécution de plusieurs jobs dans un stage ==> exécution //
-# "." : job désactivé
 .bullshit_job:
   stage: test
   tags:
@@ -32,9 +60,6 @@ units:
 
 coverage:
   stage: coverage
-  # optionnel: needs va pouvoir démarrer le job coverage 
-  # dès que le job units terminé
-  # même si le job bullshit n'est pas terminé
   needs: [units]
   image: haynes/jacoco2cobertura:1.0.7
   tags:
@@ -49,5 +74,20 @@ coverage:
       coverage_report:
         coverage_format: cobertura
         path: target/site/cobertura.xml
+
+sonar:
+  stage: quality
+  tags:
+    - myusine
+  script:
+    - >
+      mvn clean test sonar:sonar
+      -Dsonar.projectKey=myproject
+      -Dsonar.host.url=$SONAR_URL
+      -Dsonar.login=$SONAR_TOKEN
+      -Dsonar.qualitygate.wait=true
+      -Dsonar.java.binaries=target
+      -Dsonar.junit.reportPaths=target/surefire-reports
+      -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
       
 

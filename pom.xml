@@ -15,6 +15,9 @@
         <maven.compiler.target>17</maven.compiler.target>
         <junit-surefire.version>3.2.5</junit-surefire.version>
         <jacoco.version>0.8.7</jacoco.version>
+        <!-- sonar.host.url>http://gitlab.myusine.fr:9000</sonar.host.url>
+        <sonar.projectKey>myproject</sonar.projectKey>
+        <sonar.login>sqp_ee7f18071a401ac2817b1fede39cbccaaa07c561</sonar.login -->
     </properties>
 
     <dependencies>
@@ -41,6 +44,11 @@
             <artifactId>junit-jupiter-params</artifactId>
             <version>${junit-jupiter.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.sonarsource.scanner.maven</groupId>
+            <artifactId>sonar-maven-plugin</artifactId>
+            <version>3.7.0.1746</version>
         </dependency>
 
     </dependencies>
@@ -114,6 +122,11 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
                 <version>2.23.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.7.0.1746</version>
             </plugin>
         </plugins>
     </build>

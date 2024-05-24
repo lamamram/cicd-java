@@ -26,7 +26,7 @@ public class ZipCodeRegexTest {
   @DisplayName("tester le match d'une cible à partir du début")
   @Tag("Unit")
   public void testMatch() {
-    String zipcode = "44500";
+    String zipcode = "33500";
     assertNotNull(zcr.match(zipcode));
   }
 
